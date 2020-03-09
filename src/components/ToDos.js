@@ -1,13 +1,21 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import ToDoItem from './ToDoItem'
 
 class ToDos extends React.Component {
     render() {
         return (
-            <div>
-                ToDos Space
-            </div>
+            <React.Fragment>
+               {this.props.todos.map(todo => <ToDoItem />)}
+            </React.Fragment>
         )
     }
 }
 
-export default ToDos
+const mapStateToProps = (state) => {
+    return {
+        todos: state.todos
+    }
+}
+
+export default connect(mapStateToProps, null)(ToDos);

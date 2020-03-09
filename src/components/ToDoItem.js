@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux';
 
 class ToDoItem extends React.Component {
     render() {
@@ -10,4 +11,11 @@ class ToDoItem extends React.Component {
     }
 }
 
-export default ToDoItem
+const mapStateToProps = (state) => {
+    return {
+        todos: state.todos
+    }
+}
+
+export default connect(mapStateToProps, null)(ToDoItem);
+

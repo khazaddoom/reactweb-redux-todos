@@ -1,15 +1,32 @@
 const initialState = {
-    todos: [{id: 100}],
+    todos: [],
     selectedFilter: 'ALL',
     lastId: 0
 }
 
+let initialId = 0;
+
 const reducer = (state=initialState, action) => {
     switch (action.type) {     
-        case 'CLEAN_TODOS' :
+        case 'GET_TODOS' :
             return {
                 ...state,
-                todos: [{id: -999}]
+            }
+        case 'ADD_TODO' :
+            state.todos = [
+                ...state.todos,
+                { id: ++initialId, title: action.payload }
+            ]
+            return {
+                ...state,
+            }
+        case 'DELETE_TODO' :
+            return {
+                ...state,
+            }
+        case 'TOGGLE_TODO' :
+            return {
+                ...state,
             }      
         default:
             return {...state};
