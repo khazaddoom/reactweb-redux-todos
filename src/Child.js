@@ -14,7 +14,7 @@ class Child extends React.Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state /*, ownProps */) => {
     const { todos }  = state;
     return {
         todos
