@@ -39,6 +39,21 @@ body {
     color: white;
 }
 
+.item, .add-todo  {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+    width: 50vw;
+    padding: 1rem;
+    background-color: gray;
+    color: white;
+}
+
+.add-todo {
+    background-color: slateblue;
+    padding: 2rem;
+}
+
 @media screen and (max-width: 500px) {
     .header a {
       float: none;

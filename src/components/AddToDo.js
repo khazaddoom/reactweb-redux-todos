@@ -17,7 +17,7 @@ class AddToDo extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="add-todo">
                 <input type="text" value={this.state.textValue} onChange={this.onChange}></input>
                 <button onClick={this.props.addTodo.bind(this, this.state.textValue)}>Add ToDo</button>
             </div>

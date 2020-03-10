@@ -5,9 +5,9 @@ class ToDoItem extends React.Component {
     render() {
         const { todoData } = this.props;
         return (
-            <div>
+            <div className="item">
                 <input type="checkbox" checked={todoData.isComplete} onChange={this.props.toggleToDo.bind(this, todoData.id)}/>
-                {todoData.title}
+                <span>{todoData.title}</span>
                 <button onChange={this.props.deleteToDo.bind(this, todoData.id)}>Delete ToDo</button>
             </div>
         )

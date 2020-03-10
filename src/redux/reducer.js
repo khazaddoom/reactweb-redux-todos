@@ -8,10 +8,7 @@ let initialId = 0;
 
 const reducer = (state=initialState, action) => {
     switch (action.type) {     
-        case 'GET_TODOS' :
-            return {
-                ...state,
-            }
+        
         case 'ADD_TODO' :
             state.todos = [
                 ...state.todos,
@@ -36,7 +33,11 @@ const reducer = (state=initialState, action) => {
 
             return {
                 ...state,
-            }      
+            }
+        case 'GET_TODOS' :
+            return {
+                ...state,
+            }     
         default:
             return {...state};
     }
