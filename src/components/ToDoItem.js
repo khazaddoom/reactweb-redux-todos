@@ -5,17 +5,12 @@ class ToDoItem extends React.Component {
     render() {
         return (
             <div>
-                ToDo Item Space
+                <input type="checkbox" />
+                {this.props.todoData.title}
+                <button>Delete ToDo</button>
             </div>
         )
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        todos: state.todos
-    }
-}
-
-export default connect(mapStateToProps, null)(ToDoItem);
-
+export default ToDoItem;

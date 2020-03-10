@@ -6,7 +6,7 @@ class ToDos extends React.Component {
     render() {
         return (
             <React.Fragment>
-               {this.props.todos.map(todo => <ToDoItem />)}
+               {this.props.todos.map(todo => <ToDoItem todoData={todo}/>)}
             </React.Fragment>
         )
     }
