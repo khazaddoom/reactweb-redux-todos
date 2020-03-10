@@ -15,7 +15,7 @@ class ToDoItem extends React.Component {
         this.setState({
             isChecked: !this.state.isChecked
         });
-        this.props.toggleToDo(e.target.id)
+        this.props.toggleToDo(+e.target.id) // state variable is a integer
     }
 
     render() {
