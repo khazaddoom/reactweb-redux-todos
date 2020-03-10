@@ -18,6 +18,10 @@ const reducer = (state=initialState, action) => {
                 ...state,
             }
         case 'DELETE_TODO' :
+            let tobeReplacedToDos = state.todos.filter(todo => todo.id !== action.payload);
+            
+            state.todos = tobeReplacedToDos;            
+
             return {
                 ...state,
             }

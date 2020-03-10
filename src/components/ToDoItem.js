@@ -24,7 +24,7 @@ class ToDoItem extends React.Component {
             <div className="item">
                 <input type="checkbox" id={todoData.id} checked={this.state.isChecked} onChange={this.onChange}/>
                 <span>{todoData.title}</span>
-                <button onChange={this.props.deleteToDo.bind(this, todoData.id)}>Delete ToDo</button>
+                <button onClick={this.props.deleteToDo.bind(this, todoData.id)}>Delete ToDo</button>
             </div>
         )
     }
