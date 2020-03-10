@@ -15,7 +15,7 @@ const reducer = (state=initialState, action) => {
         case 'ADD_TODO' :
             state.todos = [
                 ...state.todos,
-                { id: ++initialId, title: action.payload }
+                { id: ++initialId, title: action.payload, isComplete: false }
             ]
             return {
                 ...state,
@@ -25,6 +25,15 @@ const reducer = (state=initialState, action) => {
                 ...state,
             }
         case 'TOGGLE_TODO' :
+
+            let todos = state.todos.map(todo => {
+                if(todo.id === action.payload)
+                    todo.isComplete = !todo.isComplete;
+                return todo;
+            });
+            
+            state.todos = todos;
+
             return {
                 ...state,
             }      
