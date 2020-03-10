@@ -24,7 +24,7 @@ const reducer = (state=initialState, action) => {
         case 'TOGGLE_TODO' :
 
             let todos = state.todos.map(todo => {
-                if(todo.id === action.payload)
+                if(todo.id == action.payload)
                     todo.isComplete = !todo.isComplete;
                 return todo;
             });
