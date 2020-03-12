@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { DELETE_TODO, TOGGLE_TODO } from '../redux/ToDos/todos.actions';
 
 class ToDoItem extends React.Component {
 
@@ -17,8 +18,8 @@ class ToDoItem extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        toggleToDo: (id) => dispatch({ type: 'TOGGLE_TODO', payload: id }),
-        deleteToDo: (id) => dispatch({ type: 'DELETE_TODO', payload: id })
+        toggleToDo: (id) => dispatch({ type: TOGGLE_TODO, payload: id }),
+        deleteToDo: (id) => dispatch({ type: DELETE_TODO, payload: id })
     }
 
 }

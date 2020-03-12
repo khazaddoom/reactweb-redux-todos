@@ -4,10 +4,10 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from "redux-devtools-extension";
-import reducer from './redux/reducer';
+import { todosReducer } from './redux/ToDos/todos.reducer';
 import thunk from 'redux-thunk';
 
-const store = createStore(reducer, {todos: []}, composeWithDevTools(applyMiddleware(thunk)))
+const store = createStore(todosReducer, {todos: []}, composeWithDevTools(applyMiddleware(thunk)))
 
 ReactDOM.render(
     <Provider store={store}>

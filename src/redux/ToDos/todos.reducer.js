@@ -1,3 +1,5 @@
+import { ADD_TODO, DELETE_TODO, TOGGLE_TODO, ADD_TODO_STARTING, ADD_TODO_FAILED } from "./todos.actions";
+
 const initialState = {
     todos: [],
     selectedFilter: 'ALL',
@@ -6,10 +8,10 @@ const initialState = {
 
 let initialId = 0;
 
-const reducer = (state=initialState, action) => {
+export const todosReducer = (state=initialState, action) => {
     switch (action.type) {     
         
-        case 'ADD_TODO_COMPLETED' :
+        case ADD_TODO:
 
             state.todos = [
                 ...state.todos,
@@ -18,7 +20,7 @@ const reducer = (state=initialState, action) => {
             return {
                 ...state,
             }
-        case 'DELETE_TODO' :
+        case DELETE_TODO :
             let tobeReplacedToDos = state.todos.filter(todo => todo.id !== action.payload);
             
             state.todos = tobeReplacedToDos;            
@@ -26,7 +28,7 @@ const reducer = (state=initialState, action) => {
             return {
                 ...state,
             }
-        case 'TOGGLE_TODO' :
+        case TOGGLE_TODO :
 
             let todos = state.todos.map(todo => {
                 if(todo.id === action.payload)
@@ -39,17 +41,13 @@ const reducer = (state=initialState, action) => {
             return {
                 ...state,
             }
-        case 'GET_TODOS' :
-            return {
-                ...state,
-            }
 
-        case 'ADD_TODO_STARTING': 
+        case ADD_TODO_STARTING: 
             return {
                 ...state
             }
         
-        case 'ADD_TODO_FAILED': 
+        case ADD_TODO_FAILED: 
             return {
                 ...state
             }
@@ -62,17 +60,17 @@ const reducer = (state=initialState, action) => {
 export const addToDoToDb = (value) => {
     return (dispatch) => {
         dispatch({
-            type: 'ADD_TODO_STARTING',
+            type: ADD_TODO_STARTING,
             payload: 'starting'
         });
 
         getSomething(value)
             .then(() => dispatch({
-                type: 'ADD_TODO_COMPLETED',
+                type: ADD_TODO,
                 payload: value
             }))
             .catch(err => dispatch({
-                type: 'ADD_TODO_FAILED',
+                type: ADD_TODO_FAILED,
                 payload: 'error',
                 errorMessage: err
             }))
@@ -86,6 +84,3 @@ export const getSomething = (value) => {
         }, 2000);
     })
 }
-
-
-export default reducer;
