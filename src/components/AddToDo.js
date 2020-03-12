@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { addToDoToDb } from '../redux/reducer';
 
 class AddToDo extends React.Component {
     constructor(props) {
@@ -28,10 +29,7 @@ class AddToDo extends React.Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        addTodo: (value) => dispatch({
-            type: 'ADD_TODO',
-            payload: value
-        })
+        addTodo: (value) => dispatch(addToDoToDb(value))
     }
 
 }
