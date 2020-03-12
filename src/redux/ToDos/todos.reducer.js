@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO, TOGGLE_TODO, ADD_TODO_STARTING, ADD_TODO_FAILED } from "./todos.actions";
+import * as ACTION_TYPES from "./todos.actions";
 
 const initialState = {
     todos: [],
@@ -11,7 +11,7 @@ let initialId = 0;
 export const todosReducer = (state=initialState, action) => {
     switch (action.type) {     
         
-        case ADD_TODO:
+        case ACTION_TYPES.ADD_TODO:
 
             state.todos = [
                 ...state.todos,
@@ -20,7 +20,7 @@ export const todosReducer = (state=initialState, action) => {
             return {
                 ...state,
             }
-        case DELETE_TODO :
+        case ACTION_TYPES.DELETE_TODO :
             let tobeReplacedToDos = state.todos.filter(todo => todo.id !== action.payload);
             
             state.todos = tobeReplacedToDos;            
@@ -28,7 +28,7 @@ export const todosReducer = (state=initialState, action) => {
             return {
                 ...state,
             }
-        case TOGGLE_TODO :
+        case ACTION_TYPES.TOGGLE_TODO :
 
             let todos = state.todos.map(todo => {
                 if(todo.id === action.payload)
@@ -42,12 +42,12 @@ export const todosReducer = (state=initialState, action) => {
                 ...state,
             }
 
-        case ADD_TODO_STARTING: 
+        case ACTION_TYPES.ADD_TODO_STARTING: 
             return {
                 ...state
             }
         
-        case ADD_TODO_FAILED: 
+        case ACTION_TYPES.ADD_TODO_FAILED: 
             return {
                 ...state
             }
@@ -60,17 +60,17 @@ export const todosReducer = (state=initialState, action) => {
 export const addToDoToDb = (value) => {
     return (dispatch) => {
         dispatch({
-            type: ADD_TODO_STARTING,
+            type: ACTION_TYPES.ADD_TODO_STARTING,
             payload: 'starting'
         });
 
         getSomething(value)
             .then(() => dispatch({
-                type: ADD_TODO,
+                type: ACTION_TYPES.ADD_TODO,
                 payload: value
             }))
             .catch(err => dispatch({
-                type: ADD_TODO_FAILED,
+                type: ACTION_TYPES.ADD_TODO_FAILED,
                 payload: 'error',
                 errorMessage: err
             }))
