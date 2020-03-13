@@ -8,8 +8,8 @@ export default class App extends React.Component {
         render() {
             return (
                 <React.Fragment >
-                    <Header / >
-                        <AddToDo />
+                    <Header />
+                    <AddToDo />
                     <ToDos />
                 </React.Fragment>
             )
