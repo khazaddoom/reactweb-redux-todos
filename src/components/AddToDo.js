@@ -18,11 +18,23 @@ class AddToDo extends React.Component {
 
     render() {
         return (
-            <div className="add-todo">
-                <input type="text" value={this.state.textValue} onChange={this.onChange}></input>
+            <div style={styles.container}>
+                <input type="text" value={this.state.textValue} onChange={this.onChange} style={styles.input}></input>
                 <button onClick={this.props.addTodo.bind(this, this.state.textValue)}>Add ToDo</button>
             </div>
         )
+    }
+}
+
+const styles = {
+    container : {
+        backgroundColor: 'slateblue',
+        margin: '0 auto',
+        textAlign: 'center',
+        padding: '1rem'
+    },
+    input : {
+        marginRight: '1rem'
     }
 }
 
